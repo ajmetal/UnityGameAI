@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/StateMachine/StateMachine - 01/Scenes/StateMachine - 01.unity
+  isLoaded: 1
+  isActive: 1
