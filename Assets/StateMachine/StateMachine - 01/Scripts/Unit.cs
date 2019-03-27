@@ -19,6 +19,8 @@ abstract public class Unit : MonoBehaviour
     PLAYER,
     COMPUTER
   }
+
+  [SerializeField]
   protected Alliance alliance = Alliance.COMPUTER;
   public Alliance GetAlliance
   {
@@ -42,11 +44,20 @@ abstract public class Unit : MonoBehaviour
     get { return maxHealth; }
   }
 
+  protected bool alive = true;
+  public bool IsAlive
+  {
+    get { return alive; }
+  }
+
   [SerializeField]
   protected float attackRange = 1f;
   [SerializeField]
   protected float attackSpeed = 1f;
   [SerializeField]
+  protected float deathFadeTime = 1f;
+  [SerializeField]
+  protected float deathFadeDelay = 1f;
 
   //abstract methods
   public abstract void SelectUnit();
@@ -114,16 +125,38 @@ abstract public class Unit : MonoBehaviour
   //  commands.Enqueue(command);
   //}
 
-  public void TakeDamage(int damage)
+  public virtual void TakeDamage(int damage)
   {
     Debug.Log("damage taken by: " + name);
     health -= damage;
     if (health <= 0)
     {
-      Destroy(gameObject);
-      Destroy(healthBar.gameObject);
+      Die();
     }
     healthBar.UpdateHealth(health);
+  }
+
+  protected virtual IEnumerator FadeThenDestroy()
+  {
+    float deathTime = Time.time;
+    yield return new WaitForSeconds(deathFadeDelay);
+    while(Time.time < deathFadeTime + deathTime)
+    {
+      transform.Translate(Vector3.down * Time.deltaTime);
+      yield return new WaitForEndOfFrame();
+    }
+    Destroy(gameObject);
+    Destroy(healthBar.gameObject);
+  }
+
+  protected virtual void Die()
+  {
+    Debug.Log("Unit die");
+    alive = false;
+    gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+    healthBar.gameObject.SetActive(false);
+    selectionIcon.SetActive(false);
+    StartCoroutine(FadeThenDestroy());
   }
 
   private void OnValidate()

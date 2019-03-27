@@ -21,7 +21,7 @@ public class Soldier : Unit
 
   }
 
-  public void Update()
+  protected override void Update()
   {
 
     if (animator.GetBool("running") && agent.velocity == Vector3.zero)
@@ -35,19 +35,20 @@ public class Soldier : Unit
       animator.SetBool("running", true);
     }
 
-    if(animator.GetBool("attacking") && currentTarget == null)
+    if(animator.GetBool("attacking") && !currentTarget.IsAlive)
     {
       animator.SetBool("attacking", false);
+      currentTarget = null;
     }
 
   }
 
-  override public void SelectUnit()
+  public override void SelectUnit()
   {
     selectionIcon.SetActive(true);
   }
 
-  override public void DeselectUnit()
+  public override void DeselectUnit()
   {
     selectionIcon.SetActive(false);
     objective.SetActive(false);
@@ -63,7 +64,6 @@ public class Soldier : Unit
 
   public override void Attack(Unit target)
   {
-
     if (Vector3.Distance(target.transform.position, transform.position) <= attackRange)
     {
       agent.SetDestination(transform.position);

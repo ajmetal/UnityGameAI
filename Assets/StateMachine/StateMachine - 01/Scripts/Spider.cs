@@ -8,12 +8,16 @@ public class Spider : Unit
   private NavMeshAgent agent;
   private Animator animator;
 
+  [SerializeField]
+  private GameObject deathEffect;
+
   protected override void Awake()
   {
     base.Awake();
     selectionIcon.SetActive(false);
     agent = GetComponent<NavMeshAgent>();
     animator = GetComponent<Animator>();
+    deathEffect.SetActive(false);
   }
 
   override public void SelectUnit()
@@ -37,5 +41,15 @@ public class Spider : Unit
   {
     throw new System.NotImplementedException();
   }
+
+  protected override void Die()
+  {
+    Debug.Log("Spider die");
+    deathEffect.SetActive(true);
+    animator.SetBool("dead", true);
+    base.Die();
+  }
+
+
 
 }

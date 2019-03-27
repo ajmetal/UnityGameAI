@@ -5,32 +5,32 @@ using System.Linq;
 
 public class CommandManager : MonoBehaviour
 {
-  public static CommandManager Instance
-  {
-    get
-    {
-      if (instance != null)
-      {
-        return instance;
-      }
-      instance = FindObjectOfType<CommandManager>();
+  //public static CommandManager Instance
+  //{
+  //  get
+  //  {
+  //    if (instance != null)
+  //    {
+  //      return instance;
+  //    }
+  //    instance = FindObjectOfType<CommandManager>();
 
-      if (instance != null)
-      {
-        return instance;
-      }
+  //    if (instance != null)
+  //    {
+  //      return instance;
+  //    }
 
-      var singletonObject = new GameObject();
-      instance = singletonObject.AddComponent<CommandManager>();
-      singletonObject.name = "InputManager";
-      DontDestroyOnLoad(singletonObject);
-      return instance;
-    }
+  //    var singletonObject = new GameObject();
+  //    instance = singletonObject.AddComponent<CommandManager>();
+  //    singletonObject.name = "InputManager";
+  //    DontDestroyOnLoad(singletonObject);
+  //    return instance;
+  //  }
 
-    private set { }
-  }
+  //  private set { }
+  //}
 
-  private static CommandManager instance;
+  //private static CommandManager instance;
 
   private List<Unit> allUnits;
   private List<Unit> alliedUnits;
@@ -60,17 +60,17 @@ public class CommandManager : MonoBehaviour
 
   void Awake()
   {
-    if (instance == null)
-    {
-      instance = this;
-    }
-    else
-    {
-      Destroy(gameObject);
-      return;
-    }
+    //if (instance == null)
+    //{
+    //  instance = this;
+    //}
+    //else
+    //{
+    //  Destroy(gameObject);
+    //  return;
+    //}
 
-    DontDestroyOnLoad(gameObject);
+    //DontDestroyOnLoad(gameObject);
 
     selectedUnits = new List<Unit>();
     squareTransform.gameObject.SetActive(false);
