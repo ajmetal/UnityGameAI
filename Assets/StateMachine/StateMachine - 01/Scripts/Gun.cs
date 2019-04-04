@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Unit), typeof(AudioSource), typeof(AmmoParticles))]
+[RequireComponent(typeof(Unit), typeof(AudioSource))]
 public class Gun : MonoBehaviour
 {
-  [SerializeField]
-  private GameObject flashEffectPrefab;
-  private FlashEffect impactFlash;
-  private FlashEffect muzzleFlash;
 
+  //VFX
+  [SerializeField]
+  private MuzzleFlashEffect muzzleFlash;
+  [SerializeField]
+  private float muzzleFlashSize = 1f;
+  [SerializeField]
+  private float muzzleFlashIntensity = 1f;
+
+  //Audio
   private AudioSource audioSource;
   [SerializeField]
   private AudioClip gunShotClip;
@@ -17,40 +22,41 @@ public class Gun : MonoBehaviour
   [Range(0, 1)]
   private float gunShotVolume = 1f;
 
-  [SerializeField]
-  private float flashIntensity;
-  [SerializeField]
-  private float flashSize;
 
+  //Gameplay
+  private Unit parentUnit;
   [SerializeField]
   private Transform fireTransform;
-
-  private AmmoParticles ammoParticles;
-
-  private Unit parentUnit;
+  [SerializeField]
+  private int damage = 1;
+  public float attackSpeed = 1.0f;
+  public float attackRange = 15f;
 
   private void Awake()
   {
-    impactFlash = Instantiate(flashEffectPrefab).GetComponent<FlashEffect>();
-    muzzleFlash = Instantiate(flashEffectPrefab).GetComponent<FlashEffect>();
     audioSource = GetComponent<AudioSource>();
     audioSource.volume = gunShotVolume;
     parentUnit = GetComponent<Unit>();
-    ammoParticles = GetComponent<AmmoParticles>();
   }
 
-  public void Fire(float flashTime)
+  private void Start()
+  {
+    muzzleFlash.SetParticleDuration(attackSpeed);
+  }
+
+  public void Fire(float flashDuration)
   {
     if (parentUnit.CurrentTarget == null) return;
+
     muzzleFlash.transform.position = fireTransform.position;
     muzzleFlash.transform.rotation = fireTransform.rotation;
-    muzzleFlash.Flash(flashTime, flashIntensity, flashSize);
-    impactFlash.transform.position = parentUnit.CurrentTarget.transform.position;
-    parentUnit.CurrentTarget.TakeDamage(1);
-    impactFlash.Flash(flashTime, flashIntensity, flashSize);
+    muzzleFlash.Flash(flashDuration, muzzleFlashIntensity, muzzleFlashSize);
+
     audioSource.Stop();
     audioSource.PlayOneShot(gunShotClip, gunShotVolume);
-    ammoParticles.EjectShell();
+
+    parentUnit.CurrentTarget.TakeDamage(damage);
+
   }
 
 }

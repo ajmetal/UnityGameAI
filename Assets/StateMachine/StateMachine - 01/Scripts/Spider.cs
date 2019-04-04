@@ -22,13 +22,11 @@ public class Spider : Unit
 
   override public void SelectUnit()
   {
-    Debug.Log(gameObject.name + "selected");
     selectionIcon.SetActive(true);
   }
 
   override public void DeselectUnit()
   {
-    Debug.Log(gameObject.name + "deselected");
     selectionIcon.SetActive(false);
   }
 
@@ -44,7 +42,6 @@ public class Spider : Unit
 
   protected override void Die()
   {
-    Debug.Log("Spider die");
     deathEffect.SetActive(true);
     animator.SetBool("dead", true);
     base.Die();

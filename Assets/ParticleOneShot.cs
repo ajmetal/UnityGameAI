@@ -9,6 +9,8 @@ public class ParticleOneShot : MonoBehaviour
 
   [SerializeField]
   private List<AudioClip> playSounds;
+  [SerializeField]
+  private float volume = 1f;
 
   protected void Awake()
   {
@@ -23,7 +25,7 @@ public class ParticleOneShot : MonoBehaviour
     {
       for (int i = 0; i < playSounds.Count; ++i)
       {
-        audio.PlayOneShot(playSounds[i]);
+        audio.PlayOneShot(playSounds[i], volume);
       }
     }
   }

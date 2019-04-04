@@ -17,7 +17,7 @@ public class Soldier : Unit
     agent = GetComponent<NavMeshAgent>();
     gun = GetComponent<Gun>();
     animator = GetComponent<Animator>();
-    animator.SetFloat("attackSpeed", attackSpeed);
+    animator.SetFloat("attackSpeed", gun.attackSpeed);
 
   }
 
@@ -64,7 +64,7 @@ public class Soldier : Unit
 
   public override void Attack(Unit target)
   {
-    if (Vector3.Distance(target.transform.position, transform.position) <= attackRange)
+    if (Vector3.Distance(target.transform.position, transform.position) <= gun.attackRange)
     {
       agent.SetDestination(transform.position);
       transform.LookAt(target.transform.position);

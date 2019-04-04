@@ -11,6 +11,8 @@ abstract public class Unit : MonoBehaviour
   protected GameObject objective;
   [SerializeField]
   protected GameObject selectionIcon;
+  [SerializeField]
+  protected UIManager uiManager;
 
   private static int unitCount = 0;
 
@@ -50,10 +52,10 @@ abstract public class Unit : MonoBehaviour
     get { return alive; }
   }
 
-  [SerializeField]
-  protected float attackRange = 1f;
-  [SerializeField]
-  protected float attackSpeed = 1f;
+  //[SerializeField]
+  //protected float attackRange = 1f;
+  //[SerializeField]
+  //protected float attackSpeed = 1f;
   [SerializeField]
   protected float deathFadeTime = 1f;
   [SerializeField]
@@ -88,7 +90,7 @@ abstract public class Unit : MonoBehaviour
   protected virtual void Awake()
   {
     unitID = unitCount++;
-    healthBar = UIManager.Instance.AddHealthBar(this);
+    healthBar = uiManager.AddHealthBar(this);//UIManager.Instance.AddHealthBar(this);
     healthSlider = healthBar.GetComponent<Slider>();
     healthSlider.maxValue = maxHealth;
     healthSlider.value = health;
@@ -127,7 +129,6 @@ abstract public class Unit : MonoBehaviour
 
   public virtual void TakeDamage(int damage)
   {
-    Debug.Log("damage taken by: " + name);
     health -= damage;
     if (health <= 0)
     {
@@ -151,7 +152,6 @@ abstract public class Unit : MonoBehaviour
 
   protected virtual void Die()
   {
-    Debug.Log("Unit die");
     alive = false;
     gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
     healthBar.gameObject.SetActive(false);
