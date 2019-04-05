@@ -17,22 +17,17 @@ public class Soldier : Unit
     agent = GetComponent<NavMeshAgent>();
     gun = GetComponent<Gun>();
     animator = GetComponent<Animator>();
-    animator.SetFloat("attackSpeed", gun.attackSpeed);
 
   }
 
   protected override void Update()
   {
 
-    if (animator.GetBool("running") && agent.velocity == Vector3.zero)
+    animator.SetFloat("speed", agent.velocity.magnitude);
+
+    if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
     {
-      animator.SetBool("running", false);
       objective.SetActive(false);
-    }
-    else if (animator.GetBool("running") == false && agent.velocity != Vector3.zero)
-    {
-      transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
-      animator.SetBool("running", true);
     }
 
     if(animator.GetBool("attacking") && !currentTarget.IsAlive)

@@ -52,10 +52,6 @@ abstract public class Unit : MonoBehaviour
     get { return alive; }
   }
 
-  //[SerializeField]
-  //protected float attackRange = 1f;
-  //[SerializeField]
-  //protected float attackSpeed = 1f;
   [SerializeField]
   protected float deathFadeTime = 1f;
   [SerializeField]
@@ -101,31 +97,12 @@ abstract public class Unit : MonoBehaviour
 
   protected virtual void Update()
   {
-    //Debug.Log(currentCommand);
-    //if(currentCommand == null && commands.Count > 0)
-    //{
-    //  Command command = commands.Dequeue();
-    //  switch(command.type)
-    //  {
-    //    case CommandType.ATTACK:
-    //      currentCommand = StartCoroutine(Attack(command));
-    //      break;
-    //    case CommandType.MOVE:
-    //      currentCommand = StartCoroutine(Move(command));
-    //      break;
-    //  }
-    //}
   }
 
   protected virtual void LateUpdate()
   {
     healthTransform.position = Camera.main.WorldToScreenPoint(transform.position + healthOffset);
   }
-
-  //public void IssueCommand(Command command)
-  //{
-  //  commands.Enqueue(command);
-  //}
 
   public virtual void TakeDamage(int damage)
   {

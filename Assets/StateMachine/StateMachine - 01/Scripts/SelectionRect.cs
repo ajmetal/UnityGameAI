@@ -3,8 +3,6 @@
 [RequireComponent(typeof(RectTransform))]
 public class SelectionRect : MonoBehaviour
 {
-
-
   private Rect rect;
   [SerializeField]
   private RectTransform rectTransform;
@@ -15,7 +13,6 @@ public class SelectionRect : MonoBehaviour
   private void Awake()
   {
     rectTransform.gameObject.SetActive(false);
-
     rect = new Rect();
   }
 

@@ -61,24 +61,6 @@ public class CommandManager : MonoBehaviour
       {
         ClearSelectedUnits();
       }
-
-      //clicked once
-      //if (Time.time - clickTime <= delay)
-      //{
-      //  RaycastHit hit;
-      //  if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 200f))
-      //  {
-      //    Unit unit = hit.collider.gameObject.GetComponent<Unit>();
-      //    if (unit != null)
-      //    {
-      //      AddUnit(unit);
-      //    }
-      //  }
-      //}
-
-      ////click was held
-      //else
-      //{
       for (int i = 0; i < alliedUnits.Count; i++)
       {
         Unit currentUnit = alliedUnits[i];
@@ -87,7 +69,6 @@ public class CommandManager : MonoBehaviour
           AddUnit(currentUnit);
         }
       }
-      //}
     }
 
     //===================================================================
@@ -132,7 +113,6 @@ public class CommandManager : MonoBehaviour
     }
     for (int i = 0; i < selectedUnits.Count; ++i)
     {
-      //selectedUnits[i].IssueCommand(new Command(CommandType.MOVE, destination));
       selectedUnits[i].Move(destination);
     }
   }
@@ -146,7 +126,6 @@ public class CommandManager : MonoBehaviour
     }
     for (int i = 0; i < selectedUnits.Count; ++i)
     {
-      //selectedUnits[i].IssueCommand(new Command(CommandType.ATTACK, target));
       selectedUnits[i].Attack(target);
     }
   }
