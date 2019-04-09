@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu]
 public class UIManager : ScriptableObject
@@ -8,7 +6,7 @@ public class UIManager : ScriptableObject
   [SerializeField]
   private GameObject healthBarPrefab;
 
-  public HealthBar AddHealthBar(Unit unit)
+  public HealthBar AddHealthBar()
   {
     var hb = Instantiate(healthBarPrefab).GetComponent<HealthBar>();
     hb.transform.SetParent(FindObjectOfType<Canvas>().transform, false);

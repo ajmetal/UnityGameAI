@@ -844,3 +844,7 @@ C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\obj\Debug\Assembly-CSharp.csp
 C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\obj\Debug\Assembly-CSharp.dll
 C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\obj\Debug\Assembly-CSharp.pdb
+C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\Temp\bin\Debug\Unity.ProBuilder.AddOns.Editor.dll
+C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\Temp\bin\Debug\Unity.ProBuilder.AssetIdRemapUtility.dll
+C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\Temp\bin\Debug\Unity.ProBuilder.AssetIdRemapUtility.pdb
+C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\Temp\bin\Debug\Unity.ProBuilder.AddOns.Editor.pdb

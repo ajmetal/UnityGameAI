@@ -1,50 +1,27 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Light), typeof(ParticleSystem))]
+[RequireComponent(typeof(Light))]
 public class MuzzleFlashEffect : MonoBehaviour
 {
-
-  //new keyword is used to eliminate warning from deprecated gameObject.light
+  //new keyword hides deprecated gameObject.light
   private new Light light;
 
-  [SerializeField]
-  private Gun gun;
-
-  [SerializeField]
-  private ParticleSystem bulletShells;
-  [SerializeField]
-  private ParticleSystem tracerRounds;
-  private ParticleSystem muzzleFlash;
+  private ParticleSystem projectile;
 
   private void Awake()
   {
     light = GetComponent<Light>();
     light.intensity = 0;
-    muzzleFlash = GetComponent<ParticleSystem>();
-    muzzleFlash.Stop();
-    var main = muzzleFlash.main;
-    main.playOnAwake = false;
-    main.loop = false;
-  }
-
-  public void SetParticleDuration(float duration)
-  {
-    ParticleSystem.MainModule main = muzzleFlash.main;
-    main.duration = duration;
-    main = bulletShells.main;
-    main.duration = duration;
-    main = tracerRounds.main;
-    main.duration = duration;
+    projectile = GetComponent<ParticleSystem>();
   }
 
   public void Flash(float fadeOutTime, float intensity = 2f, float size = 1)
   {
     light.intensity = intensity;
-    muzzleFlash.Stop();
-    muzzleFlash.transform.localScale = Vector3.one * size;
-    muzzleFlash.Play();
+    projectile.Stop();
+    light.areaSize = Vector2.one * size;
+    projectile.Play();
     StartCoroutine(FadeOut(fadeOutTime));
   }
 
@@ -53,5 +30,4 @@ public class MuzzleFlashEffect : MonoBehaviour
     yield return new WaitForSeconds(fadeOutTime);
     light.intensity = 0;
   }
-
 }

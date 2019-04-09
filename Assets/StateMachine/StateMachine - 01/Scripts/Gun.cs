@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Unit), typeof(AudioSource))]
+[RequireComponent(typeof(Unit))]
 public class Gun : MonoBehaviour
 {
+  //dependency
+  private Unit parentUnit;
 
   //VFX
   [SerializeField]
@@ -14,17 +14,7 @@ public class Gun : MonoBehaviour
   [SerializeField]
   private float muzzleFlashIntensity = 1f;
 
-  //Audio
-  private AudioSource audioSource;
-  [SerializeField]
-  private AudioClip gunShotClip;
-  [SerializeField]
-  [Range(0, 1)]
-  private float gunShotVolume = 1f;
-
-
   //Gameplay
-  private Unit parentUnit;
   [SerializeField]
   private Transform fireTransform;
   [SerializeField]
@@ -34,14 +24,7 @@ public class Gun : MonoBehaviour
 
   private void Awake()
   {
-    audioSource = GetComponent<AudioSource>();
-    audioSource.volume = gunShotVolume;
     parentUnit = GetComponent<Unit>();
-  }
-
-  private void Start()
-  {
-    muzzleFlash.SetParticleDuration(attackSpeed);
   }
 
   public void Fire(float flashDuration)
@@ -51,9 +34,6 @@ public class Gun : MonoBehaviour
     muzzleFlash.transform.position = fireTransform.position;
     muzzleFlash.transform.rotation = fireTransform.rotation;
     muzzleFlash.Flash(flashDuration, muzzleFlashIntensity, muzzleFlashSize);
-
-    audioSource.Stop();
-    audioSource.PlayOneShot(gunShotClip, gunShotVolume);
 
     parentUnit.CurrentTarget.TakeDamage(damage);
 
