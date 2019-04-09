@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Health))]
 abstract public class Unit : MonoBehaviour
@@ -16,6 +17,9 @@ abstract public class Unit : MonoBehaviour
   protected GameObject model;
   [SerializeField]
   protected float flashTime = 0.2f;
+
+  protected NavMeshAgent agent;
+  protected Animator animator;
 
   private static int unitCount = 0;
 
@@ -34,12 +38,6 @@ abstract public class Unit : MonoBehaviour
 
   protected Health health;
 
-  //abstract methods
-  public abstract void SelectUnit();
-  public abstract void DeselectUnit();
-  public abstract void Move(Vector3 destination);
-  public abstract void Attack(Unit target);
-
   //the unit this unit is attacking
   protected Unit currentTarget;
   public Unit CurrentTarget
@@ -53,15 +51,37 @@ abstract public class Unit : MonoBehaviour
     get { return unitID; }
   }
 
+  //abstract methods
+  public abstract void SelectUnit();
+  public abstract void DeselectUnit();
+
   protected virtual void Awake()
   {
     unitID = unitCount++;
     health = GetComponent<Health>();
+    agent = GetComponent<NavMeshAgent>();
+    animator = GetComponent<Animator>();
+  }
+
+  public virtual void Move(Vector3 destination)
+  {
+    if (agent == null) return;
+    agent.SetDestination(destination);
+    objective.SetActive(true);
+    objective.transform.position = destination;
+    animator.SetBool("attacking", false);
+  }
+
+  public virtual void Attack(Unit target)
+  {
+    agent.SetDestination(transform.position);
+    transform.LookAt(target.transform.position);
+    animator.SetBool("attacking", true);
+    currentTarget = target.GetComponent<Unit>();
   }
 
   public virtual void TakeDamage(int damage)
   {
-
     health.TakeDamage(damage);
     StartCoroutine(HitFlash());
   }

@@ -5,8 +5,6 @@ using UnityEditor;
 public class EnemyUnit : Unit
 {
 
-  private NavMeshAgent agent;
-  private Animator animator;
   private Gun gun;
 
   protected override void Awake()
@@ -14,15 +12,11 @@ public class EnemyUnit : Unit
     base.Awake();
     selectionIcon.SetActive(false);
     objective.SetActive(false);
-    agent = GetComponent<NavMeshAgent>();
     gun = GetComponent<Gun>();
-    animator = GetComponent<Animator>();
-
   }
 
   protected void Update()
   {
-
     animator.SetFloat("speed", agent.velocity.magnitude);
 
     if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
@@ -34,7 +28,6 @@ public class EnemyUnit : Unit
     {
       animator.SetBool("attacking", false);
     }
-
   }
 
   public override void SelectUnit()
@@ -48,23 +41,11 @@ public class EnemyUnit : Unit
     objective.SetActive(false);
   }
 
-  public override void Move(Vector3 destination)
-  {
-    agent.SetDestination(destination);
-    objective.SetActive(true);
-    objective.transform.position = destination;
-    animator.SetBool("attacking", false);
-  }
-
   public override void Attack(Unit target)
   {
     if (Vector3.Distance(target.transform.position, transform.position) <= gun.attackRange)
     {
-      agent.SetDestination(transform.position);
-      transform.LookAt(target.transform.position);
-      animator.SetBool("attacking", true);
-      currentTarget = target.GetComponent<Unit>();
-
+      base.Attack(target);
     }
   }
 
@@ -77,7 +58,4 @@ public class EnemyUnit : Unit
   {
     Debug.Log("Can't see player anymore");
   }
-
-
-
 }

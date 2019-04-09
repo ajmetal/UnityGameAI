@@ -4,8 +4,6 @@ using UnityEngine.AI;
 public class PlayerUnit : Unit
 {
 
-  private NavMeshAgent agent;
-  private Animator animator;
   private Gun gun;
 
   protected override void Awake()
@@ -13,15 +11,11 @@ public class PlayerUnit : Unit
     base.Awake();
     selectionIcon.SetActive(false);
     objective.SetActive(false);
-    agent = GetComponent<NavMeshAgent>();
     gun = GetComponent<Gun>();
-    animator = GetComponent<Animator>();
-
   }
 
   protected void Update()
   {
-
     animator.SetFloat("speed", agent.velocity.magnitude);
 
     if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
@@ -38,7 +32,6 @@ public class PlayerUnit : Unit
     {
       transform.LookAt(currentTarget.transform.position);
     }
-
   }
 
   public override void SelectUnit()
@@ -52,23 +45,11 @@ public class PlayerUnit : Unit
     objective.SetActive(false);
   }
 
-  public override void Move(Vector3 destination)
-  {
-    agent.SetDestination(destination);
-    objective.SetActive(true);
-    objective.transform.position = destination;
-    animator.SetBool("attacking", false);
-  }
-
   public override void Attack(Unit target)
   {
     if (Vector3.Distance(target.transform.position, transform.position) <= gun.attackRange)
     {
-      agent.SetDestination(transform.position);
-      transform.LookAt(target.transform.position);
-      animator.SetBool("attacking", true);
-      currentTarget = target.GetComponent<Unit>();
-
+      base.Attack(target);
     }
   }
 
