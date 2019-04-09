@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 631079187}
   - component: {fileID: 631079188}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SelectionIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,13 +90,12 @@ GameObject:
   - component: {fileID: 1025539948}
   - component: {fileID: 1025539951}
   - component: {fileID: 1025539950}
-  - component: {fileID: 1025539949}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1025539948
 Transform:
@@ -157,19 +156,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1025539949
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1025539947}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1061959099
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,8 +166,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1061959100}
   - component: {fileID: 1061959101}
-  m_Layer: 0
-  m_Name: heading
+  m_Layer: 11
+  m_Name: Heading
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1090889519}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,13 +279,12 @@ GameObject:
   - component: {fileID: 1360472835}
   - component: {fileID: 1360472838}
   - component: {fileID: 1360472837}
-  - component: {fileID: 1360472836}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1360472835
 Transform:
@@ -360,19 +345,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1360472836
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360472834}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1482446548
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,8 +356,7 @@ GameObject:
   - component: {fileID: 1482446549}
   - component: {fileID: 1482446552}
   - component: {fileID: 1482446551}
-  - component: {fileID: 1482446550}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,20 +423,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1482446550
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482446548}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1651971381668042121
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +435,7 @@ GameObject:
   - component: {fileID: 9049488460193178896}
   - component: {fileID: 520700911674669259}
   - component: {fileID: 7486326213013780042}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MoveIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,13 +623,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5381323823670076753}
-  - component: {fileID: 7225016309039797076}
-  - component: {fileID: 4377694004564260859}
+  - component: {fileID: 7388502949288809181}
   - component: {fileID: 7225016309039797075}
   - component: {fileID: 8192602534273143190}
-  - component: {fileID: 7089333429536116300}
   - component: {fileID: 1638840280196421552}
-  m_Layer: 0
+  - component: {fileID: 7089333429536116300}
+  m_Layer: 11
   m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +653,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7225016309039797076
+--- !u!114 &7388502949288809181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -706,34 +662,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5384196383554224469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10ecaf2c897b482409992d24c6205691, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d4a1c203db79924f899860ec8e8809b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objective: {fileID: 1651971381668042121}
-  selectionIcon: {fileID: 631079186}
-  uiManager: {fileID: 11400000, guid: b78421dda82b88848b08fc2937703b06, type: 2}
-  alliance: 0
-  health: 10
+  currentHealth: 10
   maxHealth: 10
-  deathFadeTime: 1
-  deathFadeDelay: 1
-  healthOffset: {x: 0, y: 2.1, z: 0}
---- !u!114 &4377694004564260859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5384196383554224469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8084304a253590c4c8b81c2f4ab3d579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireTransform: {fileID: 8394619511383502032}
-  damage: 1
-  attackSpeed: 1
-  attackRange: 15
+  uiManager: {fileID: 11400000, guid: b78421dda82b88848b08fc2937703b06, type: 2}
+  healthOffset: {x: 0, y: 2, z: 0}
+  deathEffectPrefab: {fileID: 379241619925837509, guid: 6facb64814cd5f944bb843d0b2ed8a08,
+    type: 3}
+  deathEffectMaterial: {fileID: 2100000, guid: ccb27583c6e3d424eaadf9ac5af4f8e4, type: 2}
 --- !u!195 &7225016309039797075
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -766,10 +704,29 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 2.9951966
+  m_Radius: 0.5
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.9975983, z: 0}
+--- !u!95 &1638840280196421552
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5384196383554224469}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 066a7312dc0bc8541852b12495bd7116, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &7089333429536116300
 AudioSource:
   m_ObjectHideFlags: 0
@@ -866,25 +823,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &1638840280196421552
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5384196383554224469}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 066a7312dc0bc8541852b12495bd7116, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5401253043100555593
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +832,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8394619511383502032}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FireTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,7 +847,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5401253043100555593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.238}
+  m_LocalPosition: {x: -0.025, y: -0.029, z: 1.188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1090889519}
@@ -925,7 +863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2843457948131048086}
   - component: {fileID: 6278046349104077267}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SelectionIcon (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

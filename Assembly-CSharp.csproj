@@ -60,14 +60,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FieldOfView.cs" />
+    <Compile Include="Assets\Patrol.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\CommandManager.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\Commands.cs" />
+    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\EnemyUnit.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\Gun.cs" />
+    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\Health.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\HealthBar.cs" />
+    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\MuzzleFlashEffect.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\Objective.cs" />
+    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\PlayerUnit.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\SelectionRect.cs" />
-    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\Soldier.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\StateMachine.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\UIManager.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\Unit.cs" />

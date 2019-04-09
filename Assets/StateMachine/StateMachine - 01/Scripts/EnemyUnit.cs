@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.AI;
+using UnityEditor;
 
-public class Soldier : Unit
+public class EnemyUnit : Unit
 {
 
   private NavMeshAgent agent;
@@ -20,7 +20,7 @@ public class Soldier : Unit
 
   }
 
-  protected override void Update()
+  protected void Update()
   {
 
     animator.SetFloat("speed", agent.velocity.magnitude);
@@ -30,10 +30,9 @@ public class Soldier : Unit
       objective.SetActive(false);
     }
 
-    if(animator.GetBool("attacking") && !currentTarget.IsAlive)
+    if (animator.GetBool("attacking") && currentTarget == null)
     {
       animator.SetBool("attacking", false);
-      currentTarget = null;
     }
 
   }
@@ -68,5 +67,17 @@ public class Soldier : Unit
 
     }
   }
+
+  public void AlertOn()
+  {
+    Debug.Log("Detected Player");
+  }
+
+  public void AlertOff()
+  {
+    Debug.Log("Can't see player anymore");
+  }
+
+
 
 }

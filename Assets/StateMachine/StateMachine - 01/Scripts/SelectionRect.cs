@@ -63,7 +63,6 @@ public class SelectionRect : MonoBehaviour
     //Set the size of the square
     rectTransform.sizeDelta = new Vector2(sizeX, sizeY);
 
-    //TL
     rect.min = new Vector2(middle.x - sizeX / 2f, middle.y + sizeY / 2f);
     rect.max = new Vector3(middle.x + sizeX / 2f, middle.y - sizeY / 2f);
   }

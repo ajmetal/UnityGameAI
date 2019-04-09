@@ -14,14 +14,7 @@ public class CommandManager : MonoBehaviour
 
   private SelectionRect selectionRect;
 
-  private AudioSource audioSource;
-
-  [SerializeField]
-  private float voiceOverVolume = 1f;
-  [SerializeField]
-  private List<AudioClip> attackVoiceOvers;
-  [SerializeField]
-  private List<AudioClip> moveVoiceOvers;
+  public LayerMask clickableMask;
 
   void Awake()
   {
@@ -43,8 +36,6 @@ public class CommandManager : MonoBehaviour
       .Where(unit => unit.GetAlliance == Unit.Alliance.COMPUTER)
       .ToArray()
     );
-
-    audioSource = GetComponent<AudioSource>();
 
   }
 
@@ -80,23 +71,25 @@ public class CommandManager : MonoBehaviour
       if (selectedUnits.Count != 0 && selectedUnits[0].GetAlliance == Unit.Alliance.PLAYER)
       {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 200f))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 200f, clickableMask))
         {
           Unit currentUnit = hit.collider.GetComponent<Unit>();
           if (currentUnit != null)
           {
             if (currentUnit.GetAlliance == Unit.Alliance.COMPUTER)
             {
+              //if the clicked unit was an enemy, attack it
               IssueAttackOrder(currentUnit);
-
             }
             else
             {
+              //the unit clicked was an ally, move to to it.
               IssueMoveOrder(currentUnit.transform.position);
             }
           }
           else
           {
+            //the ground was clicked, move to the point
             IssueMoveOrder(hit.point);
           }
         }
@@ -104,26 +97,24 @@ public class CommandManager : MonoBehaviour
     }
   }
 
+  /// <summary>
+  /// Commands the selected unit(s) to move to the location where the player clicked
+  /// </summary>
+  /// <param name="destination"></param>
   private void IssueMoveOrder(Vector3 destination)
   {
-    if (Random.Range(0, 4) <= 1)
-    {
-      AudioClip voiceOver = moveVoiceOvers[Random.Range(0, moveVoiceOvers.Count)];
-      audioSource.PlayOneShot(voiceOver, voiceOverVolume);
-    }
     for (int i = 0; i < selectedUnits.Count; ++i)
     {
       selectedUnits[i].Move(destination);
     }
   }
 
+  /// <summary>
+  /// Commands the selected unit(s) to attack the target that the player clicked
+  /// </summary>
+  /// <param name="target"></param>
   private void IssueAttackOrder(Unit target)
   {
-    if (Random.Range(0, 4) <= 1)
-    {
-      AudioClip voiceOver = attackVoiceOvers[Random.Range(0, attackVoiceOvers.Count)];
-      audioSource.PlayOneShot(voiceOver, voiceOverVolume);
-    }
     for (int i = 0; i < selectedUnits.Count; ++i)
     {
       selectedUnits[i].Attack(target);

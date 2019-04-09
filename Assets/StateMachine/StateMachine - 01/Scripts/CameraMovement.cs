@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -20,19 +18,21 @@ public class CameraMovement : MonoBehaviour
   public float minZClamp = -1000;
   public float maxZClamp = 1000;
 
+  public bool mouseMovementEnabled = true;
+
   void Update()
   {
     Vector3 delta = Vector3.zero;
 
-    if (Input.GetKey("a") || Input.mousePosition.x <= xBorder)
+    if (Input.GetKey("a") || (Input.mousePosition.x <= xBorder && mouseMovementEnabled))
     {
       delta += Vector3.left;
     }
-    else if(Input.GetKey("d") || Input.mousePosition.x >= Screen.width - xBorder)
+    else if(Input.GetKey("d") || (Input.mousePosition.x >= Screen.width - xBorder && mouseMovementEnabled))
     {
       delta += Vector3.right;
     }
-    if(Input.GetKey("s") || Input.mousePosition.y <= yBorder)
+    if(Input.GetKey("s") || (Input.mousePosition.y <= yBorder && mouseMovementEnabled))
     {
       if (Camera.main.orthographic)
       {
@@ -43,7 +43,7 @@ public class CameraMovement : MonoBehaviour
         delta += Vector3.back;
       }
     }
-    else if(Input.GetKey("w") || Input.mousePosition.y >= Screen.height - yBorder)
+    else if(Input.GetKey("w") || (Input.mousePosition.y >= Screen.height - yBorder && mouseMovementEnabled))
     {
       if (Camera.main.orthographic)
       {

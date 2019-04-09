@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using System;
+﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
+[RequireComponent(typeof(Health))]
 abstract public class Unit : MonoBehaviour
 {
 
@@ -13,6 +12,10 @@ abstract public class Unit : MonoBehaviour
   protected GameObject selectionIcon;
   [SerializeField]
   protected UIManager uiManager;
+  [SerializeField]
+  protected GameObject model;
+  [SerializeField]
+  protected float flashTime = 0.2f;
 
   private static int unitCount = 0;
 
@@ -29,33 +32,7 @@ abstract public class Unit : MonoBehaviour
     get { return alliance; }
   }
 
-  //fields
-  [SerializeField]
-  protected int health = 1;
-
-  public int Health
-  {
-    get { return health; }
-  }
-
-  [SerializeField]
-  protected float maxHealth = 1f;
-
-  public float MaxHealth
-  {
-    get { return maxHealth; }
-  }
-
-  protected bool alive = true;
-  public bool IsAlive
-  {
-    get { return alive; }
-  }
-
-  [SerializeField]
-  protected float deathFadeTime = 1f;
-  [SerializeField]
-  protected float deathFadeDelay = 1f;
+  protected Health health;
 
   //abstract methods
   public abstract void SelectUnit();
@@ -76,69 +53,40 @@ abstract public class Unit : MonoBehaviour
     get { return unitID; }
   }
 
-  //Health UI
-  protected HealthBar healthBar;
-  protected Slider healthSlider;
-  private RectTransform healthTransform;
-  [SerializeField]
-  private Vector3 healthOffset;
-
   protected virtual void Awake()
   {
     unitID = unitCount++;
-    healthBar = uiManager.AddHealthBar(this);//UIManager.Instance.AddHealthBar(this);
-    healthSlider = healthBar.GetComponent<Slider>();
-    healthSlider.maxValue = maxHealth;
-    healthSlider.value = health;
-    healthTransform = healthSlider.GetComponent<RectTransform>();
-    //objective = new GameObject();
-    //commands = new Queue<Command>();
-  }
-
-  protected virtual void Update()
-  {
-  }
-
-  protected virtual void LateUpdate()
-  {
-    healthTransform.position = Camera.main.WorldToScreenPoint(transform.position + healthOffset);
+    health = GetComponent<Health>();
   }
 
   public virtual void TakeDamage(int damage)
   {
-    health -= damage;
-    if (health <= 0)
+
+    health.TakeDamage(damage);
+    StartCoroutine(HitFlash());
+  }
+
+  protected IEnumerator HitFlash()
+  {
+    List<Renderer> renderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
+    Renderer renderer = GetComponent<Renderer>();
+    if (renderer != null)
     {
-      Die();
+      renderers.Add(renderer);
     }
-    healthBar.UpdateHealth(health);
-  }
-
-  protected virtual IEnumerator FadeThenDestroy()
-  {
-    float deathTime = Time.time;
-    yield return new WaitForSeconds(deathFadeDelay);
-    while(Time.time < deathFadeTime + deathTime)
+    for (int i = 0; i < renderers.Count; ++i)
     {
-      transform.Translate(Vector3.down * Time.deltaTime);
-      yield return new WaitForEndOfFrame();
+      Material mat = renderers[i].material;
+      mat.SetColor("_EmissionColor", Color.white);
     }
-    Destroy(gameObject);
-    Destroy(healthBar.gameObject);
-  }
 
-  protected virtual void Die()
-  {
-    alive = false;
-    gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
-    healthBar.gameObject.SetActive(false);
-    selectionIcon.SetActive(false);
-    StartCoroutine(FadeThenDestroy());
-  }
+    yield return new WaitForSeconds(flashTime);
 
-  private void OnValidate()
-  {
-    if (maxHealth < health) maxHealth = health;
+    for (int i = 0; i < renderers.Count; ++i)
+    {
+      Material mat = renderers[i].material;
+      mat.SetColor("_EmissionColor", Color.black);
+    }
   }
 
 }

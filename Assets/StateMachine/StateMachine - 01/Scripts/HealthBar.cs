@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
@@ -20,15 +18,6 @@ public class HealthBar : MonoBehaviour
   {
     rectTransform = GetComponent<RectTransform>();
     healthSlider = GetComponent<Slider>();
-  }
-
-  public void SetUnitReference(Unit unit)
-  {
-    unitReference = unit;
-    currentHealth = unit.Health;
-    maxHealth = unit.MaxHealth;
-    healthSlider.maxValue = maxHealth;
-    healthSlider.minValue = 0;
   }
 
   public void UpdateHealth(int updatedHealth)
