@@ -101,7 +101,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &1930662221
+--- !u!114 &5453856652656476679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,11 +110,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186784992565928070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53ebc795a3866344782a1cad111a2ac1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6da06771a2fa26940944113655722e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pathPoints: []
-  loopType: 0
+  currentPoint: 0
+  lastPathPosition: {fileID: 0}
+  patrolling: 1
+  returning: 0
+  currentState: {fileID: 11400000, guid: 4d67f91b29f6da64cb6e732d643d316e, type: 2}
+  states:
+  - {fileID: 11400000, guid: 4d67f91b29f6da64cb6e732d643d316e, type: 2}
 --- !u!114 &1646642732371870312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +246,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5384196383554224469, guid: 793cf6a334c18114385d84e23fed0adc,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyUnit
+      objectReference: {fileID: 0}
     - target: {fileID: 5381323823670076753, guid: 793cf6a334c18114385d84e23fed0adc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -295,11 +306,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5384196383554224469, guid: 793cf6a334c18114385d84e23fed0adc,
+    - target: {fileID: 7388502949288809181, guid: 793cf6a334c18114385d84e23fed0adc,
         type: 3}
-      propertyPath: m_Name
-      value: EnemyUnit
-      objectReference: {fileID: 0}
+      propertyPath: deathEffectMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: ec7704bc617a6284ca6308909a7612dc, type: 2}
     - target: {fileID: 7225016309039797075, guid: 793cf6a334c18114385d84e23fed0adc,
         type: 3}
       propertyPath: m_Speed
@@ -314,20 +325,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ec7704bc617a6284ca6308909a7612dc, type: 2}
-    - target: {fileID: 1360472834, guid: 793cf6a334c18114385d84e23fed0adc, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1025539947, guid: 793cf6a334c18114385d84e23fed0adc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7388502949288809181, guid: 793cf6a334c18114385d84e23fed0adc,
-        type: 3}
-      propertyPath: deathEffectMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: ec7704bc617a6284ca6308909a7612dc, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 1360472834, guid: 793cf6a334c18114385d84e23fed0adc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7208432799570436197, guid: 793cf6a334c18114385d84e23fed0adc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 793cf6a334c18114385d84e23fed0adc, type: 3}
 --- !u!1 &1186784992565928070 stripped
 GameObject:

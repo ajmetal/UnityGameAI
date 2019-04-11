@@ -109,5 +109,10 @@ abstract public class Unit : MonoBehaviour
     }
   }
 
+  public bool NavMeshAgentStopped()
+  {
+    return (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending);
+  }
+
 }
 

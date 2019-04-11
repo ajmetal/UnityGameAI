@@ -52,7 +52,7 @@ PrefabInstance:
     - target: {fileID: 5381323823670076753, guid: 793cf6a334c18114385d84e23fed0adc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.47
       objectReference: {fileID: 0}
     - target: {fileID: 5381323823670076753, guid: 793cf6a334c18114385d84e23fed0adc,
         type: 3}
@@ -102,6 +102,23 @@ PrefabInstance:
     - target: {fileID: 5381323823670076753, guid: 793cf6a334c18114385d84e23fed0adc,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486326213013780042, guid: 793cf6a334c18114385d84e23fed0adc,
+        type: 3}
+      propertyPath: m_UseWorldSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482446551, guid: 793cf6a334c18114385d84e23fed0adc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ccb27583c6e3d424eaadf9ac5af4f8e4, type: 2}
+    - target: {fileID: 1025539947, guid: 793cf6a334c18114385d84e23fed0adc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360472834, guid: 793cf6a334c18114385d84e23fed0adc, type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -18,7 +18,7 @@ public class PlayerUnit : Unit
   {
     animator.SetFloat("speed", agent.velocity.magnitude);
 
-    if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
+    if (NavMeshAgentStopped())
     {
       objective.SetActive(false);
     }
