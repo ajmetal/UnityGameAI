@@ -34,3 +34,5 @@ sysinfo.txt
 *.unitypackage
 
 *.DotSettings
+*.log
+ShaderCache.db
