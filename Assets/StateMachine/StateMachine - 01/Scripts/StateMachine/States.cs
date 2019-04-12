@@ -6,13 +6,13 @@ public abstract class State<StateMachineType, ActionType> : ScriptableObject
 {
 
   [SerializeField]
-  protected List<ActionType> onUpdateActions;
+  protected List<Action<StateMachineType>> onUpdateActions;
 
   [SerializeField]
-  protected List<ActionType> onEnterActions;
+  protected List<Action<StateMachineType>> onEnterActions;
 
   [SerializeField]
-  protected List<ActionType> onLeaveActions;
+  protected List<Action<StateMachineType>> onLeaveActions;
 
   [SerializeField]
   protected List<Transition<StateMachineType, ActionType>> transitions;
@@ -29,12 +29,14 @@ public abstract class State<StateMachineType, ActionType> : ScriptableObject
     }
 
   }
+
   public virtual void OnEnterState(StateMachineType fsm)
   {
     for (int i = 0; i < onEnterActions.Count; ++i)
     {
       onEnterActions[i].Act(fsm);
     }
+
   }
 
   public virtual void OnLeaveState(StateMachineType fsm)
@@ -43,6 +45,7 @@ public abstract class State<StateMachineType, ActionType> : ScriptableObject
     {
       onLeaveActions[i].Act(fsm);
     }
+
   }
 
 }

@@ -84,7 +84,7 @@
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\StateMachine\Machines\PlayerStateMachine.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\StateMachine\States.cs" />
-    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\StateMachine\Transition.cs" />
+    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\StateMachine\Transitions.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\UIManager.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\Unit.cs" />
     <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
