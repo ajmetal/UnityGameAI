@@ -11,10 +11,7 @@ public class EnemyStateMachine : StateMachine<EnemyState>
   public List<Vector3> pathPoints;
 
   public int currentPoint;
-
   public Transform lastPathPosition;
-
-  public bool patrolling = true;
   public bool returning = false;
 
   private NavMeshAgent agent;

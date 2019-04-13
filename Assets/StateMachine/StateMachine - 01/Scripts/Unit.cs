@@ -51,10 +51,6 @@ abstract public class Unit : MonoBehaviour
     get { return unitID; }
   }
 
-  //abstract methods
-  public abstract void SelectUnit();
-  public abstract void DeselectUnit();
-
   protected virtual void Awake()
   {
     unitID = unitCount++;
@@ -63,12 +59,24 @@ abstract public class Unit : MonoBehaviour
     animator = GetComponent<Animator>();
   }
 
+  public virtual void SelectUnit()
+  {
+    selectionIcon.SetActive(true);
+    objective.SetActive(true);
+    objective.transform.position = agent.destination;
+  }
+
+  public virtual void DeselectUnit()
+  {
+    selectionIcon.SetActive(false);
+    objective.SetActive(false);
+  }
+
   public virtual void MoveTo(Vector3 destination)
   {
     if (agent == null) return;
+    agent.isStopped = false;
     agent.SetDestination(destination);
-    objective.SetActive(true);
-    objective.transform.position = destination;
     animator.SetBool("attacking", false);
   }
 

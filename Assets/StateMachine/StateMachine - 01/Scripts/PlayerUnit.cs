@@ -34,17 +34,6 @@ public class PlayerUnit : Unit
     }
   }
 
-  public override void SelectUnit()
-  {
-    selectionIcon.SetActive(true);
-  }
-
-  public override void DeselectUnit()
-  {
-    selectionIcon.SetActive(false);
-    objective.SetActive(false);
-  }
-
   public override void Attack(Unit target)
   {
     if (Vector3.Distance(target.transform.position, transform.position) <= gun.attackRange)

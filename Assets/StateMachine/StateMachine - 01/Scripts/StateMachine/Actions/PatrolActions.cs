@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System;
+using System.Collections;
 
 [CreateAssetMenu(menuName = "Enemy/Actions/ContinuePatrol")]
 public class NavigateAction : EnemyAction
@@ -19,9 +21,10 @@ public class ResumePatrolAction : EnemyAction
   public override void Act(EnemyStateMachine fsm)
   {
     fsm.Agent.isStopped = false;
+    fsm.ParentUnit.MoveTo(fsm.pathPoints[fsm.currentPoint]);
   }
-}
 
+}
 
 [CreateAssetMenu(menuName = "Enemy/Actions/StopPatrol")]
 public class StopPatrolAction : EnemyAction
