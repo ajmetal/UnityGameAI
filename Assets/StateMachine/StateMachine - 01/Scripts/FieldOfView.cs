@@ -24,8 +24,11 @@ public class FieldOfView : MonoBehaviour
   [SerializeField]
   private LayerMask obstructionMask;
 
-  public UnityEvent EnemyDetectedEvent;
-  public UnityEvent EnemyObscuredEvent;
+  //public UnityEvent EnemyDetectedEvent;
+  //public UnityEvent EnemyObscuredEvent;
+
+  private bool enemyDetected = false;
+  public bool EnemyDetected { get { return enemyDetected; } }
 
   private void Awake()
   {
@@ -41,16 +44,16 @@ public class FieldOfView : MonoBehaviour
   private IEnumerator SearchForTargets()
   {
     WaitForSeconds wait = new WaitForSeconds(delay);
-    while(gameObject.activeInHierarchy)
+    while(gameObject.activeSelf)
     {
       yield return wait;
       if(InFieldOfView())
       {
-        EnemyDetectedEvent.Invoke();
+        enemyDetected = true;
       }
       else
       {
-        EnemyObscuredEvent.Invoke();
+        enemyDetected = false;
       }
     }
   }

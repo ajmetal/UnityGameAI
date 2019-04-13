@@ -91,36 +91,6 @@ MonoBehaviour:
   obstructionMask:
     serializedVersion: 2
     m_Bits: 8192
-  EnemyDetectedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  EnemyObscuredEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &5453856652656476679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186784992565928070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da06771a2fa26940944113655722e24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathPoints: []
-  currentPoint: 0
-  lastPathPosition: {fileID: 0}
-  patrolling: 1
-  returning: 0
-  currentState: {fileID: 11400000, guid: 4d67f91b29f6da64cb6e732d643d316e, type: 2}
-  states:
-  - {fileID: 11400000, guid: 4d67f91b29f6da64cb6e732d643d316e, type: 2}
 --- !u!114 &1646642732371870312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +110,26 @@ MonoBehaviour:
   damage: 1
   attackSpeed: 1
   attackRange: 15
+--- !u!114 &5453856652656476679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186784992565928070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da06771a2fa26940944113655722e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 0}
+  states:
+  - {fileID: 0}
+  pathPoints: []
+  currentPoint: 0
+  lastPathPosition: {fileID: 0}
+  patrolling: 1
+  returning: 0
 --- !u!114 &9045223708735845605
 MonoBehaviour:
   m_ObjectHideFlags: 0

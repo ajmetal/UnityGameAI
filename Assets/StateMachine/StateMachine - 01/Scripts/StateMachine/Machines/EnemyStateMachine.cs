@@ -5,6 +5,7 @@ using UnityEditor;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Unit))]
+[RequireComponent(typeof(FieldOfView))]
 public class EnemyStateMachine : StateMachine<EnemyState>
 {
   public List<Vector3> pathPoints;
@@ -22,10 +23,14 @@ public class EnemyStateMachine : StateMachine<EnemyState>
   private Unit unit;
   public Unit ParentUnit { get { return unit; } }
 
+  private FieldOfView fov;
+  public FieldOfView FOV { get { return fov; } }
+
   protected void Awake()
   {
     agent = GetComponent<NavMeshAgent>();
     unit = GetComponent<Unit>();
+    fov = GetComponent<FieldOfView>();
   }
 
   protected void Start()
@@ -44,17 +49,28 @@ public class EnemyStateMachine : StateMachine<EnemyState>
     {
       if (currentState.Transitions[i].Condition.Check(this))
       {
-        currentState = currentState.Transitions[i].TrueState as EnemyState;
+        if (currentState.Transitions[i].TrueState as EnemyState != null)
+        {
+          ChangeState(currentState.Transitions[i].TrueState as EnemyState);
+        }
       }
-      else if(currentState.Transitions[i].FalseState as EnemyState != null)
+      else if (currentState.Transitions[i].FalseState as EnemyState != null)
       {
-        currentState = currentState.Transitions[i].FalseState as EnemyState;
+        ChangeState(currentState.Transitions[i].FalseState as EnemyState);
       }
     }
   }
 
-  private void OnDrawGizmos()
+  protected virtual void ChangeState(EnemyState to)
   {
+    currentState.OnLeaveState(this);
+    currentState = to;
+    to.OnEnterState(this);
+  }
+
+  protected override void OnDrawGizmos()
+  {
+    base.OnDrawGizmos();
     for(int i = 0; i < pathPoints.Count; ++i)
     {
       Gizmos.color = Color.red;

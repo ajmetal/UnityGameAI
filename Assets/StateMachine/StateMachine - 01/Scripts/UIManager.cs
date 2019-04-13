@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Systems/Managers/UIManager")]
 public class UIManager : ScriptableObject
 {
   [SerializeField]

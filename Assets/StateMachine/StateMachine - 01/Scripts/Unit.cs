@@ -63,7 +63,7 @@ abstract public class Unit : MonoBehaviour
     animator = GetComponent<Animator>();
   }
 
-  public virtual void Move(Vector3 destination)
+  public virtual void MoveTo(Vector3 destination)
   {
     if (agent == null) return;
     agent.SetDestination(destination);
@@ -74,10 +74,16 @@ abstract public class Unit : MonoBehaviour
 
   public virtual void Attack(Unit target)
   {
-    agent.SetDestination(transform.position);
+    agent.isStopped = true;
     transform.LookAt(target.transform.position);
     animator.SetBool("attacking", true);
     currentTarget = target.GetComponent<Unit>();
+  }
+
+  public virtual void StopAttack()
+  {
+    currentTarget = null;
+    animator.SetBool("attacking", false);
   }
 
   public virtual void TakeDamage(int damage)

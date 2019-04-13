@@ -105,7 +105,7 @@ public class CommandManager : MonoBehaviour
   {
     for (int i = 0; i < selectedUnits.Count; ++i)
     {
-      selectedUnits[i].Move(destination);
+      selectedUnits[i].MoveTo(destination);
     }
   }
 

@@ -1,35 +1,54 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+using System;
 
-public abstract class Transition<StateMachineType, ActionType> 
-  : ScriptableObject
-  where ActionType : Action<StateMachineType>
-{
+//public abstract class Transition<StateMachineType, ActionType, ConditionType> 
+//  : ScriptableObject
+//  where ActionType : Action<StateMachineType>
+//  where ConditionType : Condition<StateMachineType>
+//{
 
-  [SerializeField]
-  protected Condition<StateMachineType> condition;
-  public Condition<StateMachineType> Condition
-  {
-    get { return condition; }
-  }
+//  [SerializeField]
+//  protected ConditionType condition;
+//  public ConditionType Condition
+//  {
+//    get { return condition; }
+//  }
 
-  [SerializeField]
-  protected State<StateMachineType, ActionType> trueState;
-  public State<StateMachineType, ActionType> TrueState
-  {
-    get { return trueState; }
-  }
+//  [SerializeField]
+//  protected State<StateMachineType, ActionType, ConditionType> trueState;
+//  public State<StateMachineType, ActionType, ConditionType> TrueState
+//  {
+//    get { return trueState; }
+//  }
 
-  [SerializeField]
-  protected State<StateMachineType, ActionType> falseState = null;
-  public State<StateMachineType, ActionType> FalseState
-  {
-    get { return falseState; }
-  }
+//  [SerializeField]
+//  protected State<StateMachineType, ActionType, ConditionType> falseState = null;
+//  public State<StateMachineType, ActionType, ConditionType> FalseState
+//  {
+//    get { return falseState; }
+//  }
 
-}
+//}
 
-[CreateAssetMenu()]
-public class EnemyStateTransition : Transition<EnemyStateMachine, EnemyAction> { }
-[CreateAssetMenu()]
-public class PlayerStateTransition : Transition<PlayerStateMachine, PlayerAction> { }
+//[CreateAssetMenu()]
+//public class EnemyStateTransition 
+//  : Transition<EnemyStateMachine, EnemyAction, EnemyCondition> { }
+
+//[CreateAssetMenu()]
+//public class PlayerStateTransition 
+//  : Transition<PlayerStateMachine, PlayerAction, PlayerCondition> { }
+
+//public class TransitionList<ConditionType, StateType>
+//{
+//  [Serializable]
+//  public struct Transition
+//  {
+//    ConditionType condition;
+//    StateType state;
+//  }
+
+//  [SerializeField]
+//  public List<Transition> transitions;
+//}
+

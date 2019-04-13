@@ -9,6 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: f49e5a7f230ec784d82096d3c921a5cb, type: 3}
   m_Name: PatrolState
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyState
+  m_EditorClassIdentifier: 
+  onUpdateActions:
+  - {fileID: 11400000, guid: 9de5817ac00ce27489ec82cef10896d8, type: 2}
+  onEnterActions:
+  - {fileID: 11400000, guid: 6aad593d0dd7d784f9bbe0e5d0d99bc9, type: 2}
+  onLeaveActions:
+  - {fileID: 11400000, guid: 09b4602612445f441be538a0c89c1728, type: 2}
+  transitions:
+  - Condition: {fileID: 11400000, guid: 8777a80a64398eb45a22fa9c2f17c103, type: 2}
+    TrueState: {fileID: 11400000, guid: d896ed1ac83d34d4ba8342d6a972b419, type: 2}
+    FalseState: {fileID: 0}

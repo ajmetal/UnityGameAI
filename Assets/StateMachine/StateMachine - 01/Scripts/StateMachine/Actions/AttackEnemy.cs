@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-[CreateAssetMenu()]
+[CreateAssetMenu(menuName = "Player/Actions/AttackEnemy")]
 public class AttackEnemyAction : PlayerAction
 {
   public override void Act(PlayerStateMachine fsm)

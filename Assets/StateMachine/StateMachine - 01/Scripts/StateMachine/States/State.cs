@@ -1,28 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
-public abstract class State<StateMachineType, ActionType> : ScriptableObject
+public abstract class State<StateMachineType, ActionType> 
+  : ScriptableObject
   where ActionType : Action<StateMachineType>
-{
+{ 
 
   [SerializeField]
-  protected List<Action<StateMachineType>> onUpdateActions;
+  protected List<ActionType> onUpdateActions;
 
   [SerializeField]
-  protected List<Action<StateMachineType>> onEnterActions;
+  protected List<ActionType> onEnterActions;
 
   [SerializeField]
-  protected List<Action<StateMachineType>> onLeaveActions;
-
-  [SerializeField]
-  protected List<Transition<StateMachineType, ActionType>> transitions;
-  public List<Transition<StateMachineType, ActionType>> Transitions
-  {
-    get { return transitions; }
-  }
+  protected List<ActionType> onLeaveActions;
 
   public virtual void OnUpdate(StateMachineType fsm)
   {
+    Type StateType = this.GetType();
     for (int i = 0; i < onUpdateActions.Count; ++i)
     {
       onUpdateActions[i].Act(fsm);
@@ -48,10 +44,10 @@ public abstract class State<StateMachineType, ActionType> : ScriptableObject
 
   }
 
+  public override string ToString()
+  {
+    return name;
+  }
+
 }
 
-[CreateAssetMenu()]
-public class PlayerState : State<PlayerStateMachine, PlayerAction> { }
-
-[CreateAssetMenu()]
-public class EnemyState : State<EnemyStateMachine, EnemyAction> { }
