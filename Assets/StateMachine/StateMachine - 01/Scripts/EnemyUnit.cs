@@ -30,17 +30,6 @@ public class EnemyUnit : Unit
     }
   }
 
-  public override void SelectUnit()
-  {
-    selectionIcon.SetActive(true);
-  }
-
-  public override void DeselectUnit()
-  {
-    selectionIcon.SetActive(false);
-    objective.SetActive(false);
-  }
-
   public override void Attack(Unit target)
   {
     if (Vector3.Distance(target.transform.position, transform.position) <= gun.attackRange)
@@ -49,13 +38,4 @@ public class EnemyUnit : Unit
     }
   }
 
-  public void AlertOn()
-  {
-    Debug.Log("Detected Player");
-  }
-
-  public void AlertOff()
-  {
-    Debug.Log("Can't see player anymore");
-  }
 }

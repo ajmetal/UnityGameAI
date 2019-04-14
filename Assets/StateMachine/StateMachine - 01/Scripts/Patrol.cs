@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Unit))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class Patrol : MonoBehaviour
 {
 
@@ -10,77 +12,46 @@ public class Patrol : MonoBehaviour
   private List<Transform> pathPoints;
 
   private NavMeshAgent agent;
+  private Unit unit;
 
-  private bool patrolling = true;
-  private bool returning = false;
-  private int nextPoint;
-
-  private enum LoopType
-  {
-    PINGPONG,
-    RESTART
-  }
-
-  [SerializeField]
-  private LoopType loopType = LoopType.PINGPONG;
+  private int currentPoint = 0;
 
   private Transform lastPathPosition;
 
   private void Awake()
   {
     agent = GetComponent<NavMeshAgent>();
-    if (pathPoints == null)
+    unit = GetComponent<Unit>();
+    if(pathPoints == null)
     {
       pathPoints = new List<Transform>();
       pathPoints.Add(transform);
     }
-    nextPoint = 0;
   }
 
   private void Start()
   {
-    agent.SetDestination(pathPoints[nextPoint].position);
+    agent.SetDestination(pathPoints[currentPoint].position);
   }
 
   private void Update()
   {
-    if (patrolling && Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
+    if (unit.NavMeshAgentStopped())
     {
-      nextPoint = returning ? --nextPoint : ++nextPoint;
-      if(nextPoint == pathPoints.Count)
-      {
-        if (loopType == LoopType.PINGPONG)
-        {
-          returning = true;
-          --nextPoint;
-        }
-        else
-        {
-          nextPoint = 0;
-        }
-      }
-      else if(nextPoint < 0)
-      {
-        returning = false;
-        ++nextPoint;
-      }
-      agent.SetDestination(pathPoints[nextPoint].position);
+      currentPoint = (currentPoint + 1) % pathPoints.Count;
+      unit.Move(pathPoints[currentPoint].position);
     }
   }
 
   public void ResumePatrol()
   {
-    if (patrolling == true) return;
-    patrolling = true;
-
-    agent.SetDestination(lastPathPosition.position);
+    agent.isStopped = false;
+    unit.Move(pathPoints[currentPoint].position);
   }
 
   public void StopPatrol()
   {
-    patrolling = false;
-    lastPathPosition = transform;
-    agent.SetDestination(transform.position);
+    agent.isStopped = true;
   }
 
 

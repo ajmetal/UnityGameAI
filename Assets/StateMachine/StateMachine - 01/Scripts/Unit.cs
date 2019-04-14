@@ -51,9 +51,16 @@ abstract public class Unit : MonoBehaviour
     get { return unitID; }
   }
 
-  //abstract methods
-  public abstract void SelectUnit();
-  public abstract void DeselectUnit();
+  public virtual void SelectUnit()
+  {
+    selectionIcon.SetActive(true);
+  }
+
+  public virtual void DeselectUnit()
+  {
+    selectionIcon.SetActive(false);
+    objective.SetActive(false);
+  }
 
   protected virtual void Awake()
   {
@@ -107,6 +114,11 @@ abstract public class Unit : MonoBehaviour
       Material mat = renderers[i].material;
       mat.SetColor("_EmissionColor", Color.black);
     }
+  }
+
+  public bool NavMeshAgentStopped()
+  {
+    return (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance);
   }
 
 }
