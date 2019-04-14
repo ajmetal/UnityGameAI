@@ -12,7 +12,7 @@ public class EnemyStateMachine : StateMachine<EnemyState>
 
   public int currentPoint;
   public Transform lastPathPosition;
-  public bool returning = false;
+  public bool aggrod = false;
 
   private NavMeshAgent agent;
   public NavMeshAgent Agent { get { return agent; } }

@@ -15,9 +15,8 @@ MonoBehaviour:
   onUpdateActions: []
   onEnterActions:
   - {fileID: 11400000, guid: 552ac72f6db8bc042aa821d9f5e166a8, type: 2}
-  onLeaveActions:
-  - {fileID: 0}
+  onLeaveActions: []
   transitions:
   - Condition: {fileID: 11400000, guid: 8777a80a64398eb45a22fa9c2f17c103, type: 2}
     TrueState: {fileID: 0}
-    FalseState: {fileID: 11400000, guid: 4d67f91b29f6da64cb6e732d643d316e, type: 2}
+    FalseState: {fileID: 11400000, guid: e92407fc2279c7240ac505cf36b48423, type: 2}

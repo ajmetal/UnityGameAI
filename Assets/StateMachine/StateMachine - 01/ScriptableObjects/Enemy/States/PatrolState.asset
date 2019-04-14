@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PatrolState
   m_EditorClassIdentifier: 
   onUpdateActions:
-  - {fileID: 11400000, guid: 9de5817ac00ce27489ec82cef10896d8, type: 2}
+  - {fileID: 11400000, guid: 6d35fd350c979c947a6b3276a9a75668, type: 2}
   onEnterActions:
-  - {fileID: 11400000, guid: 6aad593d0dd7d784f9bbe0e5d0d99bc9, type: 2}
+  - {fileID: 11400000, guid: 8454d7fd98c104b49abaa1ec75e2df0f, type: 2}
   onLeaveActions:
   - {fileID: 11400000, guid: 09b4602612445f441be538a0c89c1728, type: 2}
   transitions:

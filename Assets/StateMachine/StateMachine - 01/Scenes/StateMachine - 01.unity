@@ -10687,7 +10687,7 @@ PrefabInstance:
     - target: {fileID: 5453856652656476679, guid: 189bceef6bb802b40ad7efb8bbce5459,
         type: 3}
       propertyPath: states.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5453856652656476679, guid: 189bceef6bb802b40ad7efb8bbce5459,
         type: 3}
@@ -10737,6 +10737,12 @@ PrefabInstance:
       propertyPath: pathPoints.Array.data[2].z
       value: 17.61
       objectReference: {fileID: 0}
+    - target: {fileID: 5453856652656476679, guid: 189bceef6bb802b40ad7efb8bbce5459,
+        type: 3}
+      propertyPath: states.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: e92407fc2279c7240ac505cf36b48423,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 189bceef6bb802b40ad7efb8bbce5459, type: 3}
 --- !u!1 &2095243055
@@ -11151,6 +11157,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293430455518520755, guid: 2baa2abf65b188f47b3c17bdda38390d,
+        type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293430455518520755, guid: 2baa2abf65b188f47b3c17bdda38390d,
+        type: 3}
+      propertyPath: currentHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7436667445989160709, guid: 2baa2abf65b188f47b3c17bdda38390d,
         type: 3}

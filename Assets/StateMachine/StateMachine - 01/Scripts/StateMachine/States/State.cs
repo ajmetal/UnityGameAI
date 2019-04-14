@@ -23,7 +23,6 @@ public abstract class State<StateMachineType, ActionType>
     {
       onUpdateActions[i].Act(fsm);
     }
-
   }
 
   public virtual void OnEnterState(StateMachineType fsm)
@@ -32,7 +31,6 @@ public abstract class State<StateMachineType, ActionType>
     {
       onEnterActions[i].Act(fsm);
     }
-
   }
 
   public virtual void OnLeaveState(StateMachineType fsm)
@@ -41,7 +39,6 @@ public abstract class State<StateMachineType, ActionType>
     {
       onLeaveActions[i].Act(fsm);
     }
-
   }
 
   public override string ToString()

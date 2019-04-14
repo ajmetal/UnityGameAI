@@ -128,8 +128,7 @@ MonoBehaviour:
   pathPoints: []
   currentPoint: 0
   lastPathPosition: {fileID: 0}
-  patrolling: 1
-  returning: 0
+  aggrod: 0
 --- !u!114 &9045223708735845605
 MonoBehaviour:
   m_ObjectHideFlags: 0
