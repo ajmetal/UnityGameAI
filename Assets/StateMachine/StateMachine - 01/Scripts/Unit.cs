@@ -20,8 +20,15 @@ abstract public class Unit : MonoBehaviour
 
   protected NavMeshAgent agent;
   protected Animator animator;
+  protected Health health;
 
   private static int unitCount = 0;
+
+  protected int unitID;
+  public int UnitID
+  {
+    get { return unitID; }
+  }
 
   public enum Alliance
   {
@@ -36,19 +43,12 @@ abstract public class Unit : MonoBehaviour
     get { return alliance; }
   }
 
-  protected Health health;
-
   //the unit this unit is attacking
   protected Unit currentTarget;
   public Unit CurrentTarget
   {
     get { return currentTarget; }
-  }
-
-  protected int unitID;
-  public int UnitID
-  {
-    get { return unitID; }
+    set { currentTarget = value; }
   }
 
   public virtual void SelectUnit()
@@ -68,23 +68,35 @@ abstract public class Unit : MonoBehaviour
     health = GetComponent<Health>();
     agent = GetComponent<NavMeshAgent>();
     animator = GetComponent<Animator>();
+    selectionIcon.SetActive(false);
+    objective.SetActive(false);
   }
 
   public virtual void Move(Vector3 destination)
   {
     if (agent == null) return;
     agent.SetDestination(destination);
-    objective.SetActive(true);
     objective.transform.position = destination;
     animator.SetBool("attacking", false);
   }
 
-  public virtual void Attack(Unit target)
+  public virtual void Attack(Unit target=null)
   {
-    agent.SetDestination(transform.position);
-    transform.LookAt(target.transform.position);
+    if (target != null)
+    {
+      currentTarget = target.GetComponent<Unit>();
+    }
+    else if(currentTarget == null)
+    {
+      Debug.LogError("Unit has no target to attack.");
+    }
+
     animator.SetBool("attacking", true);
-    currentTarget = target.GetComponent<Unit>();
+  }
+
+  public virtual void StopAttack()
+  {
+    animator.SetBool("attacking", false);
   }
 
   public virtual void TakeDamage(int damage)

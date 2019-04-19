@@ -39,4 +39,9 @@ public class Gun : MonoBehaviour
 
   }
 
+  public bool InRange(Vector3 position)
+  {
+    return Vector3.Distance(transform.position, position) <= attackRange;
+  }
+
 }

@@ -6,12 +6,11 @@ public class EnemyUnit : Unit
 {
 
   private Gun gun;
+  public float timeToReset = 3f;
 
   protected override void Awake()
   {
     base.Awake();
-    selectionIcon.SetActive(false);
-    objective.SetActive(false);
     gun = GetComponent<Gun>();
   }
 
@@ -19,13 +18,9 @@ public class EnemyUnit : Unit
   {
     animator.SetFloat("speed", agent.velocity.magnitude);
 
-    if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
-    {
-      objective.SetActive(false);
-    }
-
     if (animator.GetBool("attacking") && currentTarget == null)
     {
+      
       animator.SetBool("attacking", false);
     }
   }

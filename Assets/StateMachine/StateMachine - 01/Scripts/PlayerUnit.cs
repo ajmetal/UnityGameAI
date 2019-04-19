@@ -9,8 +9,6 @@ public class PlayerUnit : Unit
   protected override void Awake()
   {
     base.Awake();
-    selectionIcon.SetActive(false);
-    objective.SetActive(false);
     gun = GetComponent<Gun>();
   }
 

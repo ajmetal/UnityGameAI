@@ -15,6 +15,8 @@ public class FieldOfView : MonoBehaviour
   [SerializeField]
   [Range(0, 179)]
   private float viewAngle = 90f;
+  [SerializeField]
+  private Vector3 eyeHeight = Vector3.up;
 
   [SerializeField]
   private float delay = 0.2f;
@@ -24,8 +26,13 @@ public class FieldOfView : MonoBehaviour
   [SerializeField]
   private LayerMask obstructionMask;
 
-  //public UnityEvent EnemyDetectedEvent;
-  //public UnityEvent EnemyObscuredEvent;
+  private Unit unit;
+
+  private Unit lastDetectedUnit = null;
+  public Unit LastDetectedUnit
+  {
+    get { return lastDetectedUnit; }
+  }
 
   private bool enemyDetected = false;
   public bool EnemyDetected
@@ -47,7 +54,7 @@ public class FieldOfView : MonoBehaviour
   private IEnumerator SearchForTargets()
   {
     WaitForSeconds wait = new WaitForSeconds(delay);
-    while(gameObject.activeInHierarchy)
+    while(gameObject.activeSelf)
     {
       yield return wait;
       if(InFieldOfView())
@@ -74,16 +81,32 @@ public class FieldOfView : MonoBehaviour
       if (unit != null && unit.GetAlliance != thisUnit.GetAlliance)
       {
         Vector3 direction = (unit.transform.position - transform.position).normalized;
-        Debug.DrawRay(transform.position, direction * viewRange, Color.red, delay);
-        if (Vector3.Angle(transform.forward, direction) <= viewAngle / 2)
+        if (Vector3.Angle(transform.forward, direction) <= viewAngle / 2 &&
+            InLineOfSight(unit.transform.position))
         {
-          if(!Physics.Raycast(transform.position, direction, viewRange, obstructionMask))
-          {
-            return true;
-          }
+          lastDetectedUnit = unit;
+          return true;
         }
       }
     }
+    return false;
+  }
+
+  /// <summary>
+  /// Checks if this unit has unobstrcuted line of sight to the target position.
+  /// </summary>
+  /// <param name="position"></param>
+  /// <returns> if the target is in line of sight </returns>
+  public bool InLineOfSight(Vector3 position)
+  {
+    Vector3 eyePosition = transform.position + eyeHeight;
+    Vector3 direction = (position + eyeHeight - eyePosition).normalized;
+    Debug.DrawRay(eyePosition, direction * viewRange, Color.red, delay);
+    if (!Physics.Raycast(eyePosition, direction, viewRange, obstructionMask))
+    {
+      return true;
+    }
+
     return false;
   }
 
