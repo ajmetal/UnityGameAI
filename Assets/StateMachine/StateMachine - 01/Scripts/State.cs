@@ -12,6 +12,14 @@ namespace FSM
     ATTACK_STATE
   }
 
+  public enum Transition
+  {
+    NULL_TRANSITION = 0,
+    ENEMY_DETECTED,
+    ATTACK_ENEMY,
+    RESET
+  }
+
   public abstract class State
   {
     protected Dictionary<Transition, StateID> map = new Dictionary<Transition, StateID>();

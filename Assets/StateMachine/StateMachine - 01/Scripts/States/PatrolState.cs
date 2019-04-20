@@ -23,7 +23,7 @@ public class PatrolState : State
     agent = obj.GetComponent<NavMeshAgent>();
     fov = obj.GetComponent<FieldOfView>();
 
-    pathPoints = obj.GetComponent<EnemyStateController>().pathPoints;
+    pathPoints = obj.GetComponent<EnemyStateMachine>().pathPoints;
   }
 
   public override void Act()

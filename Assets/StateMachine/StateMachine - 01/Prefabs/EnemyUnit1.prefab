@@ -133,7 +133,7 @@ MonoBehaviour:
   damage: 1
   attackSpeed: 1
   attackRange: 15
---- !u!114 &6478337471317894732
+--- !u!114 &1871424578331414322
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
