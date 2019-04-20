@@ -30,7 +30,7 @@ public class AttackState : State
   {
     if(unit.CurrentTarget == null || 
       !fov.InLineOfSight(unit.CurrentTarget.transform.position) ||
-      Vector3.Distance(unit.CurrentTarget.transform.position, unit.transform.position) > gun.attackRange)
+      !gun.InRange(unit.CurrentTarget.transform.position))
     {
       return Transition.RESET;
     }

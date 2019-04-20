@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using System.Collections.Generic;
 using FSM;
 
 public class ChasePlayerState : State
@@ -41,7 +40,7 @@ public class ChasePlayerState : State
 
   public override Transition Decide()
   {
-    if(unit.CurrentTarget == null || Time.time - enterStateTime >= unit.timeToReset)
+    if (unit.CurrentTarget == null || Time.time - enterStateTime >= unit.timeToReset)
     {
       return Transition.RESET;
     }
@@ -57,7 +56,10 @@ public class ChasePlayerState : State
   public override void OnEnterState()
   {
     enterStateTime = Time.time;
-    unit.CurrentTarget = fov.LastDetectedUnit;
+    if (unit.CurrentTarget == null)
+    {
+      unit.CurrentTarget = fov.LastDetectedUnit;
+    }
   }
 
   public override void OnLeaveState()

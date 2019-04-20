@@ -100,13 +100,12 @@ public class FieldOfView : MonoBehaviour
   public bool InLineOfSight(Vector3 position)
   {
     Vector3 eyePosition = transform.position + eyeHeight;
-    Vector3 direction = (position + eyeHeight - eyePosition).normalized;
-    Debug.DrawRay(eyePosition, direction * viewRange, Color.red, delay);
-    if (!Physics.Raycast(eyePosition, direction, viewRange, obstructionMask))
+    Vector3 direction = (position + eyeHeight - eyePosition);
+    Debug.DrawRay(eyePosition, direction, Color.red, delay);
+    if (!Physics.Raycast(eyePosition, direction.normalized, direction.magnitude, obstructionMask))
     {
       return true;
     }
-
     return false;
   }
 

@@ -26,12 +26,16 @@ public class EnemyStateController : MonoBehaviour
 
   private void OnDrawGizmosSelected()
   {
-    for (int i = 0; i < pathPoints.Count; ++i)
+    if (pathPoints != null)
     {
-      Gizmos.color = Color.red;
-      Gizmos.DrawCube(pathPoints[i], Vector3.one);
-      Handles.Label(pathPoints[i] + Vector3.up, i.ToString());
+      for (int i = 0; i < pathPoints.Count; ++i)
+      {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(pathPoints[i], Vector3.one);
+        Handles.Label(pathPoints[i] + Vector3.up, i.ToString());
+      }
     }
+
     if (stateMachine != null)
     {
       Handles.Label(transform.position + Vector3.up, stateMachine.CurrentState.ToString());

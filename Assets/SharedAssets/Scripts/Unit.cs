@@ -54,6 +54,7 @@ abstract public class Unit : MonoBehaviour
   public virtual void SelectUnit()
   {
     selectionIcon.SetActive(true);
+    //objective.SetActive(true);
   }
 
   public virtual void DeselectUnit()

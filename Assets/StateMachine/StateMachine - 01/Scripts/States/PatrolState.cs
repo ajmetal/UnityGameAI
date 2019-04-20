@@ -18,7 +18,6 @@ public class PatrolState : State
     stateID = StateID.PATROL_STATE;
 
     AddTransition(Transition.ENEMY_DETECTED, StateID.CHASE_STATE);
-    //AddTransition(Transition.ATTACK_ENEMY, StateID.ATTACK_STATE);
     
     unit = obj.GetComponent<Unit>();
     agent = obj.GetComponent<NavMeshAgent>();
@@ -38,14 +37,12 @@ public class PatrolState : State
 
   public override void OnEnterState()
   {
-    //agent.isStopped = false;
     unit.Move(pathPoints[currentPoint]);
   }
 
   public override void OnLeaveState()
   {
     unit.Move(unit.transform.position);
-    //agent.isStopped = true;
   }
 
   public override Transition Decide()

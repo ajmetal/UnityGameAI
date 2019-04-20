@@ -16,7 +16,7 @@ public class PlayerUnit : Unit
   {
     animator.SetFloat("speed", agent.velocity.magnitude);
 
-    if (Vector3.Distance(transform.position, agent.destination) <= agent.stoppingDistance)
+    if (NavMeshAgentStopped())
     {
       objective.SetActive(false);
     }
@@ -30,6 +30,7 @@ public class PlayerUnit : Unit
     {
       transform.LookAt(currentTarget.transform.position);
     }
+
   }
 
   public override void Attack(Unit target)
@@ -38,6 +39,12 @@ public class PlayerUnit : Unit
     {
       base.Attack(target);
     }
+  }
+
+  public override void Move(Vector3 destination)
+  {
+    objective.SetActive(true);
+    base.Move(destination);
   }
 
 

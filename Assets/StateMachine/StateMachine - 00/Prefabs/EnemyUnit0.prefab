@@ -91,23 +91,6 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &1748150268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186784992565928070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11b31335893fa74469e4cf8323720b79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathPoints:
-  - {x: 18.58, y: 0, z: 0}
-  - {x: 18.3, y: 0, z: 18.27}
-  - {x: 0, y: 0, z: 18.31}
-  - {x: 0, y: 0, z: 0}
 --- !u!114 &1930662220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +106,7 @@ MonoBehaviour:
   flashLight: {fileID: 1494256467}
   viewRange: 10
   viewAngle: 90
+  eyeHeight: {x: 0, y: 1, z: 0}
   delay: 0.2
   targetMask:
     serializedVersion: 2
@@ -256,10 +240,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5384196383554224469, guid: 793cf6a334c18114385d84e23fed0adc,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyUnit0
+      objectReference: {fileID: 0}
     - target: {fileID: 5381323823670076753, guid: 793cf6a334c18114385d84e23fed0adc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5381323823670076753, guid: 793cf6a334c18114385d84e23fed0adc,
         type: 3}
@@ -269,7 +258,7 @@ PrefabInstance:
     - target: {fileID: 5381323823670076753, guid: 793cf6a334c18114385d84e23fed0adc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.88
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5381323823670076753, guid: 793cf6a334c18114385d84e23fed0adc,
         type: 3}
@@ -310,11 +299,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384196383554224469, guid: 793cf6a334c18114385d84e23fed0adc,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemyUnit
       objectReference: {fileID: 0}
     - target: {fileID: 7388502949288809181, guid: 793cf6a334c18114385d84e23fed0adc,
         type: 3}

@@ -10,7 +10,6 @@ namespace FSM
     RESET,
     ENEMY_DETECTED,
     ATTACK_ENEMY,
-
   }
 
   public class StateMachine
@@ -116,6 +115,7 @@ namespace FSM
 
       currentState.OnLeaveState();
       currentState = states[id];
+      Debug.Log("Changed to state: " + currentState.ID.ToString());
       currentState.OnEnterState();
 
     } 
