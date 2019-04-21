@@ -13,16 +13,12 @@ public class ChasePlayerState : State
 
   public ChasePlayerState(GameObject obj)
   {
-
-    stateID = StateID.CHASE_STATE;
-    AddTransition(Transition.RESET, StateID.PATROL_STATE);
-    AddTransition(Transition.ATTACK_ENEMY, StateID.ATTACK_STATE);
+    stateID = StateID.CHASE;
 
     unit = obj.GetComponent<EnemyUnit>();
     agent = obj.GetComponent<NavMeshAgent>();
     fov = obj.GetComponent<FieldOfView>();
     gun = obj.GetComponent<Gun>();
-
   }
 
   public override void Act()
@@ -35,22 +31,21 @@ public class ChasePlayerState : State
     }
 
     agent.SetDestination(unit.CurrentTarget.transform.position);
-
   }
 
-  public override Transition Decide()
+  public override StateID Decide()
   {
     if (unit.CurrentTarget == null || Time.time - enterStateTime >= unit.timeToReset)
     {
-      return Transition.RESET;
+      return StateID.PATROL;
     }
 
     if (gun.InRange(unit.CurrentTarget.transform.position) && fov.InLineOfSight(unit.CurrentTarget.transform.position))
     {
-      return Transition.ATTACK_ENEMY;
+      return StateID.ATTACK;
     }
 
-    return Transition.NULL_TRANSITION;
+    return StateID.NULL;
   }
 
   public override void OnEnterState()

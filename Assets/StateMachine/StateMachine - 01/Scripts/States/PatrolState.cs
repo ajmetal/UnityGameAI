@@ -15,9 +15,7 @@ public class PatrolState : State
 
   public PatrolState(GameObject obj)
   {
-    stateID = StateID.PATROL_STATE;
-
-    AddTransition(Transition.ENEMY_DETECTED, StateID.CHASE_STATE);
+    stateID = StateID.PATROL;
     
     unit = obj.GetComponent<Unit>();
     agent = obj.GetComponent<NavMeshAgent>();
@@ -45,13 +43,13 @@ public class PatrolState : State
     unit.Move(unit.transform.position);
   }
 
-  public override Transition Decide()
+  public override StateID Decide()
   {
     if(fov.EnemyDetected)
     {
-      return Transition.ENEMY_DETECTED;
+      return StateID.CHASE;
     }
 
-    return Transition.NULL_TRANSITION;
+    return StateID.NULL;
   }
 }

@@ -9,8 +9,6 @@ public class EnemyStateMachine : MonoBehaviour
 
   private Dictionary<StateID, State> states;
 
-  private StateID currentStateID;
-  public StateID CurrentStateID { get { return currentStateID; } }
   private State currentState;
   public State CurrentState { get { return currentState; } }
 
@@ -25,10 +23,10 @@ public class EnemyStateMachine : MonoBehaviour
 
   private void Update()
   {
-    Transition t = currentState.Decide();
-    if (t != Transition.NULL_TRANSITION)
+    StateID id = currentState.Decide();
+    if (id != StateID.NULL)
     {
-      PerformTransition(t);
+      PerformTransition(id);
     }
     currentState.Act();
   }
@@ -47,14 +45,10 @@ public class EnemyStateMachine : MonoBehaviour
 
     if (currentState != null)
     {
-      Handles.Label(transform.position + Vector3.up, currentStateID.ToString());
+      Handles.Label(transform.position + Vector3.up, currentState.ID.ToString());
     }
   }
 
-  /// <summary>
-  /// 
-  /// </summary>
-  /// <param name="s"></param>
   public void AddState(State s)
   {
     if (s == null)
@@ -71,20 +65,14 @@ public class EnemyStateMachine : MonoBehaviour
     else if (states.Count == 0)
     {
       currentState = s;
-      currentStateID = s.ID;
     }
 
     states.Add(s.ID, s);
   }
 
-  /// <summary>
-  /// 
-  /// </summary>
-  /// <param name="id"></param>
   public void DeleteState(StateID id)
   {
-    // Check for NullState before deleting
-    if (id == StateID.NULL_STATE)
+    if (id == StateID.NULL)
     {
       Debug.LogError("FSM ERROR: NullStateID is not allowed for a real state");
       return;
@@ -101,23 +89,11 @@ public class EnemyStateMachine : MonoBehaviour
 
   }
 
-  /// <summary>
-  /// 
-  /// </summary>
-  /// <param name="trans"></param>
-  public void PerformTransition(Transition trans)
+  public void PerformTransition(StateID id)
   {
-    if (trans == Transition.NULL_TRANSITION)
+    if (id == StateID.NULL)
     {
       Debug.LogError("FSM ERROR: NullTransition is not allowed for a real transition");
-      return;
-    }
-
-    StateID id = currentState.GetOutputState(trans);
-    if (id == StateID.NULL_STATE)
-    {
-      Debug.LogError("FSM ERROR: State " + currentStateID.ToString() + " does not have a target state " +
-                     " for transition " + trans.ToString());
       return;
     }
 
