@@ -77,8 +77,6 @@
     <Compile Include="Assets\SharedAssets\Scripts\SelectionRect.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\UIManager.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\Unit.cs" />
-    <Compile Include="Assets\StateMachine\StateMachine - 00\Scripts\State.cs" />
-    <Compile Include="Assets\StateMachine\StateMachine - 00\Scripts\StateMachine.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/AJmet/Documents/UnityProjects/UnityGameAI/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
