@@ -65,7 +65,6 @@
     <Compile Include="Assets\SharedAssets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\CommandManager.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\Commands.cs" />
-    <Compile Include="Assets\SharedAssets\Scripts\EnemyStateController.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\EnemyUnit.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\FieldOfView.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\Gun.cs" />
@@ -78,11 +77,8 @@
     <Compile Include="Assets\SharedAssets\Scripts\SelectionRect.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\UIManager.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\Unit.cs" />
-    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\State.cs" />
-    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\StateMachine.cs" />
-    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\States\AttackState.cs" />
-    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\States\ChasePlayerState.cs" />
-    <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\States\PatrolState.cs" />
+    <Compile Include="Assets\StateMachine\StateMachine - 00\Scripts\State.cs" />
+    <Compile Include="Assets\StateMachine\StateMachine - 00\Scripts\StateMachine.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/AJmet/Documents/UnityProjects/UnityGameAI/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
