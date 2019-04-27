@@ -3,11 +3,13 @@ using UnityEngine;
 using UnityEditor;
 using FSM;
 
-public class EnemyStateMachine : MonoBehaviour
+public class StateMachine : MonoBehaviour
 {
   public List<Vector3> pathPoints;
 
   private Dictionary<StateID, State> states;
+
+  public float timeToReset = 3f;
 
   private State currentState;
   public State CurrentState { get { return currentState; } }
@@ -16,9 +18,9 @@ public class EnemyStateMachine : MonoBehaviour
   {
     states = new Dictionary<StateID, State>();
 
-    AddState(new PatrolState(gameObject));
-    AddState(new AttackState(gameObject));
-    AddState(new ChasePlayerState(gameObject));
+    AddState(new PatrolState(this));
+    AddState(new AttackState(this));
+    AddState(new ChaseState(this));
   }
 
   private void Update()
@@ -74,7 +76,7 @@ public class EnemyStateMachine : MonoBehaviour
   {
     if (id == StateID.NULL)
     {
-      Debug.LogError("FSM ERROR: NullStateID is not allowed for a real state");
+      Debug.LogError("FSM ERROR: StateID.NULL is not allowed for a real state");
       return;
     }
 
@@ -93,13 +95,12 @@ public class EnemyStateMachine : MonoBehaviour
   {
     if (id == StateID.NULL)
     {
-      Debug.LogError("FSM ERROR: NullTransition is not allowed for a real transition");
+      Debug.LogError("FSM ERROR: StateID.NULL is not allowed for a real transition");
       return;
     }
 
     currentState.OnLeaveState();
     currentState = states[id];
-    Debug.Log("Changed to state: " + currentState.ID.ToString());
     currentState.OnEnterState();
 
   }

@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/StateMachine/StateMachine - 01/Scenes/StateMachine - 01.unity
+- path: Assets/StateMachine/StateMachine - 00/Scenes/StateMachine - 00.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

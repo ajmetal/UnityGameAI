@@ -13,15 +13,15 @@ public class PatrolState : State
   private List<Vector3> pathPoints;
   private int currentPoint = 0;
 
-  public PatrolState(GameObject obj)
+  public PatrolState(StateMachine fsm)
   {
     stateID = StateID.PATROL;
     
-    unit = obj.GetComponent<Unit>();
-    agent = obj.GetComponent<NavMeshAgent>();
-    fov = obj.GetComponent<FieldOfView>();
+    unit = fsm.GetComponent<Unit>();
+    agent = fsm.GetComponent<NavMeshAgent>();
+    fov = fsm.GetComponent<FieldOfView>();
 
-    pathPoints = obj.GetComponent<EnemyStateMachine>().pathPoints;
+    pathPoints = fsm.GetComponent<StateMachine>().pathPoints;
   }
 
   public override void Act()

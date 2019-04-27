@@ -9,13 +9,13 @@ public class AttackState : State
   private Gun gun;
   private FieldOfView fov;
 
-  public AttackState(GameObject obj)
+  public AttackState(StateMachine fsm)
   {
     stateID = StateID.ATTACK;
 
-    unit = obj.GetComponent<Unit>();
-    gun = obj.GetComponent<Gun>();
-    fov = obj.GetComponent<FieldOfView>();
+    unit = fsm.GetComponent<Unit>();
+    gun = fsm.GetComponent<Gun>();
+    fov = fsm.GetComponent<FieldOfView>();
   }
 
   public override void Act()

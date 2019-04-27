@@ -790,3 +790,4 @@ C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\Temp\bin\Debug\UnityEditor.Sp
 C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\Temp\bin\Debug\UnityEngine.SpatialTracking.pdb
 C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\Temp\bin\Debug\UnityEditor.XR.LegacyInputHelpers.pdb
 C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\Temp\bin\Debug\com.unity.multiplayer-hlapi.Runtime.pdb
+C:\Users\AJmet\Documents\UnityProjects\UnityGameAI\Temp\bin\Debug\UnityEngine.Advertisements.dll

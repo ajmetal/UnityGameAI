@@ -65,7 +65,6 @@
     <Compile Include="Assets\SharedAssets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\CommandManager.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\Commands.cs" />
-    <Compile Include="Assets\SharedAssets\Scripts\EnemyStateMachine.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\EnemyUnit.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\FieldOfView.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\Gun.cs" />
@@ -76,6 +75,7 @@
     <Compile Include="Assets\SharedAssets\Scripts\Patrol.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\PlayerUnit.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\SelectionRect.cs" />
+    <Compile Include="Assets\SharedAssets\Scripts\StateMachine.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\UIManager.cs" />
     <Compile Include="Assets\SharedAssets\Scripts\Unit.cs" />
     <Compile Include="Assets\StateMachine\StateMachine - 01\Scripts\State.cs" />
@@ -312,6 +312,9 @@
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.0f2/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>C:/Users/AJmet/Documents/UnityProjects/UnityGameAI/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/AJmet/Documents/UnityProjects/UnityGameAI/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>

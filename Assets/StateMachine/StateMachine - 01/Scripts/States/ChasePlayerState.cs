@@ -2,23 +2,23 @@
 using UnityEngine.AI;
 using FSM;
 
-public class ChasePlayerState : State
+public class ChaseState : State
 {
-  private EnemyUnit unit;
-  private NavMeshAgent agent;
+  private Unit unit;
   private FieldOfView fov;
   private Gun gun;
 
   private float enterStateTime = 0;
+  private float timeToReset = 0;
 
-  public ChasePlayerState(GameObject obj)
+  public ChaseState(StateMachine fsm)
   {
     stateID = StateID.CHASE;
 
-    unit = obj.GetComponent<EnemyUnit>();
-    agent = obj.GetComponent<NavMeshAgent>();
-    fov = obj.GetComponent<FieldOfView>();
-    gun = obj.GetComponent<Gun>();
+    timeToReset = fsm.timeToReset;
+    unit = fsm.GetComponent<Unit>();
+    fov = fsm.GetComponent<FieldOfView>();
+    gun = fsm.GetComponent<Gun>();
   }
 
   public override void Act()
@@ -30,12 +30,12 @@ public class ChasePlayerState : State
       enterStateTime = Time.time;
     }
 
-    agent.SetDestination(unit.CurrentTarget.transform.position);
+    unit.Move(unit.CurrentTarget.transform.position);
   }
 
   public override StateID Decide()
   {
-    if (unit.CurrentTarget == null || Time.time - enterStateTime >= unit.timeToReset)
+    if (unit.CurrentTarget == null || Time.time - enterStateTime >= timeToReset)
     {
       return StateID.PATROL;
     }
